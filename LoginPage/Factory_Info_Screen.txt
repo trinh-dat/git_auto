@@ -1,0 +1,85 @@
+*** Settings ***
+Suite Setup       Run Application
+Suite Teardown    Close Application
+Library           AppiumLibrary
+Library           String
+Resource          resources.robot
+Resource          resource_inspectorio_app.robot
+
+*** Test Cases ***
+User can access to Factory Info screen
+    App is opened to Factory Info
+
+Validate factory list popup
+    Tap    txtCompanyName
+    ${factory_popup}    Element Exist    //android.widget.TextView[contains(@resource-id, 'tvTitle')]
+    Should Be True    ${factory_popup}
+
+Validate progress bar at the 1st going to Factory Info
+    Click A Point    1900    500
+    ${progress}    Get Text    //android.widget.TextView[contains(@resource-id, 'tvNumberCompleted')]
+    Should Be Equal    ${progress}    0% completed
+
+Validate progress bar after choose a factory
+    Tap    txtCompanyName
+    Tap    name=Anhui \ hualong
+    ${progress}    Get Text    //android.widget.TextView[contains(@resource-id, 'tvNumberCompleted')]
+    Should Be Equal    ${progress}    20% completed
+
+Validate Search function
+    Tap    txtCompanyName
+    Input Text    //android.widget.EditText[contains(@resource-id, 'editSearch')]    Others
+    ${filter_result}    Get Text    //android.widget.TextView[contains(@resource-id, 'text1')]
+    Should Be Equal    Others    ${filter_result}
+
+User should be able to input factory name if choose Others option
+    Tap    text1
+    Input Text    //android.widget.EditText[contains(@resource-id, 'txtCompanyName')]    Inspectorio
+    ${company}    Get Text    //android.widget.EditText[contains(@resource-id, 'txtCompanyName')]
+    Should Be Equal    ${company}    Inspectorio
+
+User should be able to reselect factory by tap on Search icon
+    Tap    tvSearchRight
+    Tap    name=Anhui \ hualong
+    ${company}    Get Text    //android.widget.EditText[contains(@resource-id, 'txtCompanyName')]
+    Should Be Equal    ${company}    Anhui \ hualong
+
+User should be able to input year
+    Tap    rlButtonNext
+    Input Text    //android.widget.EditText[contains(@resource-id, 'txtDateFoundation')]    2016
+    ${year}    Get Text    //android.widget.EditText[contains(@resource-id, 'txtDateFoundation')]
+    Should Be Equal    ${year}    2016
+
+Validate progress bar when input year
+    ${progress}    Get Text    //android.widget.EditText[contains(@resource-id, 'txtDateFoundation')]
+    Should Be Equal    ${progress}    40% completed
+
+User should be able to input location
+    Tap    rlButtonNext
+    Input Text    //android.widget.EditText[contains(@resource-id, 'txtLocation')]    Viet Nam
+    ${location}    Get Text    //android.widget.EditText[contains(@resource-id, 'txtLocation')]
+    Should Be Equal    ${location}    Viet Nam
+
+Validate progress bar when input location
+    ${progress}    Get Text    //android.widget.EditText[contains(@resource-id, 'txtLocation')]
+    Should Be Equal    ${progress}    60% completed
+
+User should be able to input workers number
+    Tap    rlButtonNext
+    Input Text    //android.widget.EditText[contains(@resource-id, 'txtTotalNumWorker')]    10000
+    ${workers_number}    Get Text    //android.widget.EditText[contains(@resource-id, 'txtTotalNumWorker')]
+    Should Be Equal    ${workers_number}    10000
+
+Validate progress bar when input number of workers
+    ${progress}    Get Text    //android.widget.EditText[contains(@resource-id, 'txtTotalNumWorker')]
+    Should Be Equal    ${progress}    80% completed
+
+User should be able to input main product
+    Tap    rlButtonNext
+    Input Text    //android.widget.EditText[contains(@resource-id, 'txtMainProduct')]    Jeans
+    ${product}    Get Text    //android.widget.EditText[contains(@resource-id, 'txtMainProduct')]
+    Should Be Equal    ${product}    Jeans
+
+Validate progress bar when input main product
+    ${progress}    Get Text    //android.widget.EditText[contains(@resource-id, 'txtMainProduct')]
+    Should Be Equal    ${progress}    100% completed
