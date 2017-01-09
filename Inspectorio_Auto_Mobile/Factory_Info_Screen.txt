@@ -89,7 +89,7 @@ Validate progress bar when input main product
     Should Be Equal    ${progress}    100% completed
 
 Validate fuction of Done button
-    :FOR    ${ITEM}    IN RANGE    0    4
+    : FOR    ${ITEM}    IN RANGE    0    4
     \    Tap    rlButtonNext
     Tap    btnOKProduct
     ${result}    Get Element Attribute    //android.widget.TextView[contains(@resource-id, 'tvTitle') and @text='Reference Photos']    selected

@@ -12,14 +12,14 @@ User can access to Reference Photos screen
 
 Validate Starting Inspection popup
     Log    Take Mandatory pictures
-    :FOR    ${ITEM}    IN RANGE    0    3
+    : FOR    ${ITEM}    IN RANGE    0    3
     \    Tap    //android.widget.GridView[contains(@resource-id, 'gvImageMandatory')]/android.widget.FrameLayout[@index=${ITEM}]
     \    ${title}    Get Text    //android.widget.TextView[contains(@resource-id, 'tvTitle')]
     \    Should Contain    ${title}    Starting Inspection
     \    Tap    name=No
     Scroll    name=FACTORY NAME    name=Factory Info
     Log    Take Random pictures
-    :FOR    ${ITEM}    IN RANGE    0    6
+    : FOR    ${ITEM}    IN RANGE    0    6
     \    Tap    //android.widget.GridView[contains(@resource-id, 'gvImageRandom')]/android.widget.FrameLayout[@index=${ITEM}]
     \    ${title}    Get Text    //android.widget.TextView[contains(@resource-id, 'tvTitle')]
     \    Should Contain    ${title}    Starting Inspection
