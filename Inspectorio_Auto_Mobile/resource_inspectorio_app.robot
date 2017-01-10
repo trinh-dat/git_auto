@@ -346,3 +346,15 @@ take_picture_without_overlay
     Tap    linTakePicture
     Sleep    1
     Tap    name=OK
+
+App is opened to Checklist Tests
+    Tap    relRecent
+    Sleep    2
+    Tap    //android.widget.ListView/android.widget.LinearLayout[@index='0']
+    Tap    name=Open Report
+    Tap    tvTitle
+    Tap    //android.view.View[contains(@resource-id, 'toolbar')]/android.widget.ImageButton
+    Tap    name=First Section
+    Tap    name=Second Section
+    Tap    name=Attachment Photo
+    Tap    tvTitle
