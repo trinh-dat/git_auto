@@ -44,5 +44,3 @@ Validate available remark when manually take picture
 Validate remark when system can not scan barcode
     ${remark}    Get Text    //android.widget.ExpandableListView/android.widget.LinearLayout[@index='2']/android.widget.LinearLayout/android.widget.LinearLayout[@index='0']/android.widget.TextView
     Should Contain    ${remark}    Barcode is not readable by Inspectorio application
-
-Validate display after edit remark

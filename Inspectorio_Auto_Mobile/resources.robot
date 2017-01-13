@@ -8,3 +8,7 @@ Element Exist
     ${elementCount} =    Get Matching Xpath Count    ${xpath}
     ${elementExists} =    Evaluate    ${elementCount} > 0
     [Return]    ${elementExists}
+
+Scroll Bottom
+    [Arguments]    ${last_item_locator_in_recycleView}    ${first_item_locator_in_recycleView}
+    Scroll    ${last_item_locator_in_recycleView}    ${first_item_locator_in_recycleView}

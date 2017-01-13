@@ -358,3 +358,12 @@ App is opened to Checklist Tests
     Tap    name=Second Section
     Tap    name=Attachment Photo
     Tap    tvTitle
+
+Create new report
+    Tap    ivMenu
+    Tap    name=New Report
+    Tap    name=Browse File
+    Scroll Bottom    //android.support.v7.widget.RecyclerView/android.widget.LinearLayout[@index='3']    //android.support.v7.widget.RecyclerView/android.widget.LinearLayout[@index='0']
+    Tap    name=quick full run_1611.zip
+    Wait Until Element Is Visible    //android.widget.TextView[contains(@resource-id, 'txtOk')]
+    Tap    name=OK

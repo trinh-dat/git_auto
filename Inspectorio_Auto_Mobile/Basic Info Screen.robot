@@ -12,3 +12,4 @@ Resource          resource_inspectorio_app.robot
 Validate Basic Info
     Given App is opened to Basic info screen
     Then Validate Basic Information
+    Scroll

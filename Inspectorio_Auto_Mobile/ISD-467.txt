@@ -1,0 +1,39 @@
+*** Settings ***
+Suite Setup       Run Application
+Suite Teardown    Close Application
+Library           AppiumLibrary
+Library           String
+Resource          resources.robot
+Resource          resource_inspectorio_app.robot
+
+*** Test Cases ***
+Create new report
+    Create new report
+
+Go to Packing List
+    Sleep    2
+    Tap    //android.widget.ListView/android.widget.LinearLayout[@index='0']
+    Tap    name=Open Report
+    Tap    tvTitle
+    Tap    //android.view.View[contains(@resource-id, 'toolbar')]/android.widget.ImageButton
+    Tap    name=Sample Selection
+    Tap    tvTitle
+
+Validate new behavior when choose No for Packing List
+    Tap    name=Yes
+    take_picture_without_overlay
+    Tap    defect
+    Sleep    1
+    Tap    name=OK
+    Tap    name=Yes
+    Tap    //android.widget.GridView[contains(@resource-id, 'gvPackingQuantity')]/android.widget.LinearLayout[@index='0']/android.widget.GridView/android.widget.LinearLayout[@index='0']/android.widget.RelativeLayout
+    : FOR    ${ITEM}    IN RANGE    0    4
+    \    Input Text    editNumberCarton    5
+    \    Tap    name=OK
+    Tap    name=CARTON SELECTION
+    ${whiteQuantity}    Evaluate    5+5
+    ${blueQuantity}    Evaluate    5+5
+    ${chart_whiteQuantity}    Get Text    //android.widget.TableRow[@index='1']/android.widget.TextView[@index='2']
+    ${chart_blueQuantity}    Get Text    //android.widget.TableRow[@index='2']/android.widget.TextView[@index='2']
+    Should Be True    '${whiteQuantity}'=='${chart_whiteQuantity}'
+    Should Be True    '${blueQuantity}'=='${chart_blueQuantity}'
