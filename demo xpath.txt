@@ -1,0 +1,32 @@
+xpath=//android.widget.RelativeLayout[contains(@resource-id,'linRoot')]		// take picture 1
+xpath=//android.widget.LinearLayout[contains(@resource-id,'linRoot')]		// take picture 2
+
+xpath=//android.widget.Button[contains(@resource-id,'btnStartInspection')]
+
+
+
+id = com.asiam.Inspection:id/linRoot
+class = android.widget.RelativeLayout
+
+
+text = Carton Stack Picture 1
+id = com.asiam.Inspection:id/tvTitle
+class = android.widget.TextView
+
+
+=======================================
+Product Picture
+1st color
+- id: content
+- id: linRoot
+- id: overview
+
+
+
+// get sibling elements
+xpath=//android.widget.TextView[contains(@resource-id, 'tvName') and @text='quick full run_1312.zip']/following-sibling::android.widget.RelativeLayout/android.widget.Button
+
+
+
+Page Should Contain Element btnGetData
+

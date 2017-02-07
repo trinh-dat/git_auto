@@ -1,0 +1,26 @@
+*** Settings ***
+Suite Setup       Run Application
+Suite Teardown    Close Application
+Library           AppiumLibrary
+Library           String
+Resource          resources.robot
+Resource          resource_inspectorio_app.robot
+
+*** Test Cases ***
+Generate data in Sample Selection
+    App is opened to Packing List
+    Tap    name=No
+    Tap    name=OK
+    Tap    name=Yes
+    Tap    name-Carton Selection
+
+Go to Measurement
+    Tap    xpath=//android.widget.ImageButton
+    Tap    name=First Section
+    Tap    name=Second Section
+    Tap    name=Measurements
+    Tap    tvTitle
+    Tap    title
+
+Run testing Random picture
+    Log    1ST SAMPLE ###

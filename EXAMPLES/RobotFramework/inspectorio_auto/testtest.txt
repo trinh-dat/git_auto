@@ -1,0 +1,12 @@
+*** Settings ***
+Library           Collections
+
+*** Variables ***
+@{colors}         red    green    blue
+@{animals}        cow    pig    dog
+@{things}         ${animals}    ${colors}
+
+*** Test Cases ***
+2-Dimensional List
+    Log    The ${things}
+    Log    The ${things[0][1]} is ${things[1][1]}

@@ -1,0 +1,41 @@
+*** Settings ***
+Suite Setup       Run Application
+Suite Teardown    Close Application
+Library           AppiumLibrary
+Library           String
+Resource          resources.robot
+Resource          resource_inspectorio_app.robot
+
+*** Test Cases ***
+User can access to Reference Photos screen
+    App is opened to Reference Photos
+
+Validate Starting Inspection popup
+    Log    Take Mandatory pictures
+    : FOR    ${ITEM}    IN RANGE    0    3
+    \    Tap    //android.widget.GridView[contains(@resource-id, 'gvImageMandatory')]/android.widget.FrameLayout[@index=${ITEM}]
+    \    ${title}    Get Text    //android.widget.TextView[contains(@resource-id, 'tvTitle')]
+    \    Should Contain    ${title}    Starting Inspection
+    \    Tap    name=No
+    Scroll    name=FACTORY NAME    name=Factory Info
+    Log    Take Random pictures
+    : FOR    ${ITEM}    IN RANGE    0    6
+    \    Tap    //android.widget.GridView[contains(@resource-id, 'gvImageRandom')]/android.widget.FrameLayout[@index=${ITEM}]
+    \    ${title}    Get Text    //android.widget.TextView[contains(@resource-id, 'tvTitle')]
+    \    Should Contain    ${title}    Starting Inspection
+    \    Tap    name=No
+
+App request to take pic if confirm starting inspection
+    Tap    //android.widget.GridView[contains(@resource-id, 'gvImageMandatory')]/android.widget.FrameLayout[@index='0']
+    Tap    name=Yes
+    ${title}    Get Text    //android.widget.TextView[contains(@resource-id, 'tvIntroducedMessage')]
+    Should Be Equal    ${title}    FACTORY BUILDING\nOUTSIDE VIEW
+
+Validate title of Next screen button
+    ${title}    Get Text    //android.widget.LinearLayout[contains(@resource-id, 'linNext')]/android.widget.TextView
+    Should Be Equal    ${title}    Go to Sample Selection
+
+Validate function of Next Screen button
+    Tap    linNext
+    ${overlay}    Get Text    //android.widget.TextView[contains(@resource-id, 'tvTitle')]
+    Should Be Equal    ${overlay}    Sample selection

@@ -1,0 +1,33 @@
+xpath=//android.widget.LinearLayout[contains(@resource-id, 'overview')]/android.widget.ImageView[contains(@resource-id,'itemImageView')]
+
+xpath=//android.widget.ImageView[contains(@resource-id, 'search_view')]
+
+xpath=//android.widget.TextView[contains(@resource-id, 'subTitle')]
+
+xpath=//android.widget.LinearLayout[contains(@resource-id, 'overview')]
+
+
+
+
+Resolution: 1080 x 1920 - Measurement table view - [30,462][1920,976]
+Resolution: 540 x 960 - Measurement table view - [15,228][960,489] - 
+Resolution: 540 x 960 - Measurement table view - [15,228][945,480]
+
+Swipe	1369	676	366	676	2800
+
+White-531H- 144.8 x 72.1 x 8.6 mm
+Black-530H- 144.8 x 72.1 x 8.6 mm
+
+50: [820,322]
+
+
+
+
+MATERIAL - Detail view
+ACCESSORIES - Detail
+MARKING - Placement/ Front View/ Back View - Have Match_NotMatch at Placement
+PACKING_MATERIAL - 'Poly bad' - Overview/ Detail View  - Have Match_NotMatch at Placement at Overview
+                 - Another item - Overview - Have Match_NotMatch at Placement at Overview
+
+
+('${typeView}'=='Placement' and ${imgVisible} = True) or ('${typeView}'=='Overview' and and ${imgVisible} = True) or ('${typeView}'=='Detail View' and ${imgVisible} = True)

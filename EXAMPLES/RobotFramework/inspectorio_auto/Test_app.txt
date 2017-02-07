@@ -1,0 +1,453 @@
+*** Settings ***
+Library           AppiumLibrary
+Resource          resources.robot
+Resource          resource_inspectorio_app.robot
+
+*** Variables ***
+${num}            ${EMPTY}
+
+*** Test Cases ***
+open app
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=4.4.2    deviceName=0fc991fe    appPackage=com.asiam.Inspection    appActivity=com.asiam.Inspection.activities.SplashActivity
+    ...    noReset=true
+    Comment    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=5.0.2    deviceName=LRAA99JFSSAYEY79    appPackage=com.asiam.Inspection
+    ...    appActivity=com.asiam.Inspection.activities.SplashActivity    noReset=true
+    Skip video screen
+    Open Recent section
+    Comment    Run keyword if    check Honor Code in release version
+    Sleep    2
+    Tap    xpath=//android.widget.ListView/android.widget.LinearLayout[@index='0']
+    Tap    name=Open Report
+    Tap    tvTitle
+    Tap    name=Factory Info
+    Tap    txtCompanyName
+    Tap    xpath=//android.support.v7.widget.RecyclerView/android.widget.LinearLayout[@index='0']
+    Tap    rlButtonNext
+    Input Text    txtDateFoundation    2017
+    Hide Keyboard
+    Tap    rlButtonNext
+    Input Text    txtLocation    Viet Nam
+    Hide Keyboard
+    Tap    rlButtonNext
+    Input Text    txtTotalNumWorker    10000
+    Hide Keyboard
+    Tap    rlButtonNext
+    Input Text    txtMainProduct    Jeans
+    Hide Keyboard
+    Tap    name=Reference Photos
+    Tap    name=FACTORY BUILDING\n OUTSIDE VIEW
+    Tap    name=Yes
+    Tap    preview_surface
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    name=FACTORY NAME
+    Sleep    1
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    name=PRODUCTION LINE
+    Sleep    1
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Scroll    name=Factory Info    name=General Information
+    Sleep    1
+    Tap    xpath=//android.widget.GridView[contains(@resource-id,'gvImageRandom')]/android.widget.FrameLayout[@index='0']
+    Sleep    1
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    xpath=//android.widget.GridView[contains(@resource-id,'gvImageRandom')]/android.widget.FrameLayout[@index='1']
+    Sleep    1
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    xpath=//android.widget.GridView[contains(@resource-id,'gvImageRandom')]/android.widget.FrameLayout[@index='2']
+    Sleep    1
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    xpath=//android.widget.GridView[contains(@resource-id,'gvImageRandom')]/android.widget.FrameLayout[@index='3']
+    Sleep    1
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    name=Go to Sample Selection
+    Scroll    labelHeader5    name=Carton Stack
+
+pass Sample Selection
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=5.0.2    deviceName=LRAA99JFSSAYEY79    appPackage=com.asiam.Inspection    appActivity=com.asiam.Inspection.activities.SplashActivity
+    ...    noReset=true
+    Skip video screen
+    Open Recent section
+    Sleep    2
+    Tap    xpath=//android.widget.ListView/android.widget.LinearLayout[@index='0']
+    Tap    name=Open Report
+    Tap    tvTitle
+    Tap    xpath=//android.widget.ImageButton
+    Tap    name=Sample Selection
+    Tap    tvTitle
+    Tap    textViewNo
+    Tap    name=Carton Stack
+    Tap    name=Carton Stack Picture 1
+    Tap    preview_surface
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    txtOk
+    Tap    name=Carton Stack Picture 2
+    Tap    preview_surface
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    txtOk
+    Tap    name=Front View\nShipping Mark
+    Tap    preview_surface
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    name=Side View\nShipping Mark
+    Tap    preview_surface
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    name=CARTON SELECTION
+    Scroll    name=Sample    name=Carton Stack
+    Tap    btnGetMadatoryCarton
+    Input Text    editNumberCarton    1
+    Tap    txtOk
+    Tap    button2
+    Tap    name=Go to Workmanship
+
+pass Workmanship
+    begin and go to part 1    name=Workmanship
+    Tap    textViewNo
+    Tap    name=Inspection
+    Tap    btnStartInspection
+    Tap    tvTitle
+    Tap    xpath=//android.widget.LinearLayout[@index='1']
+    take picture
+    dismiss overlay
+    dismiss 2nd overlay
+    take picture
+    dismiss overlay
+    dismiss 2nd overlay
+    take picture
+    dismiss product picture overlay
+    dismiss overlay
+    dismiss 2nd overlay
+    take picture
+    dismiss overlay
+    dismiss 2nd overlay
+    take picture
+    dismiss overlay
+    dismiss 2nd overlay
+    take picture
+
+pass Measurement
+    begin and go to part 2    name=Measurements
+    Tap    title
+    Log    1ST SAMPLE ###
+    Tap On Point    342    860
+    Tap    overview
+    take picture then sleep
+    Tap On Point    342    860
+    Tap    overview
+    take picture then sleep
+    Tap On Point    342    860
+    Tap    overview
+    take picture then sleep
+    Tap    overview
+    take picture then sleep
+    Tap    overview
+    take picture then sleep
+    Tap    overview
+    take picture then sleep
+    Log    2ND SAMPLE ###
+    Tap    title
+    Tap On Point    342    860
+    Sleep    1
+    Tap On Point    342    860
+    Sleep    1
+    Tap On Point    342    860
+    Sleep    2
+    Tap    overview
+    take picture then sleep
+    Tap    overview
+    take picture then sleep
+    Log    3RD SAMPLE ###
+    Tap    title
+    Tap On Point    342    860
+    Sleep    1
+    Tap On Point    342    860
+    Sleep    1
+    Tap On Point    342    860
+    Sleep    1
+    Tap    overview
+    take picture then sleep
+    Tap    overview
+    take picture then sleep
+    Page Should Contain Text    You already finished Measurement!
+
+loop to check Measurement issue
+    test for issue Measurement
+    Tap    textViewNo
+    Tap    name=CARTON SELECTION
+    Tap    xpath=//android.widget.ImageButton
+    Sleep    1
+    Tap    name=First Section
+    Tap    name=Second Section
+    Sleep    2
+    Tap    name=Measurements
+    Tap    tvTitle
+    Log    Begin Measurement ###
+    Tap    title
+    Log    1ST SAMPLE ###
+    Tap On Point    342    860
+    Tap    overview
+    take picture then sleep
+    Tap On Point    342    860
+    Tap    overview
+    take picture then sleep
+    Tap On Point    342    860
+    Tap    overview
+    take picture then sleep
+    Tap    overview
+    take picture then sleep
+    Tap    overview
+    take picture then sleep
+    Tap    overview
+    take picture then sleep
+    Log    2ND SAMPLE ###
+    Tap    title
+    Tap On Point    342    860
+    Sleep    1
+    Tap On Point    342    860
+    Sleep    1
+    Tap On Point    342    860
+    Sleep    2
+    Tap    overview
+    take picture then sleep
+    Tap    overview
+    take picture then sleep
+    Log    3RD SAMPLE ###
+    Tap    title
+    Tap On Point    342    860
+    Sleep    1
+    Tap On Point    342    860
+    Sleep    1
+    Tap On Point    342    860
+    Sleep    1
+    Tap    overview
+    take picture then sleep
+    Tap    overview
+    take picture then sleep
+    Page Should Contain Text    You already finished Measurement!
+
+walkthrough
+    go through GeneralInformation
+    go through SampleSelection
+    go through Workmanshipp
+
+test test
+    ${var} =    Set Variable    123
+    ${x} =    set variable if    ${var} == 1    441
+    ...    ${result} == 2    555
+    Log    ${var}
+
+*** Keywords ***
+begin and go to part 1
+    [Arguments]    ${screen_name}
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=5.0.2    deviceName=LRAA99JFSSAYEY79    appPackage=com.asiam.Inspection    appActivity=com.asiam.Inspection.activities.SplashActivity
+    ...    noReset=true
+    Skip video screen
+    Open Recent section
+    Sleep    2
+    Tap    xpath=//android.widget.ListView/android.widget.LinearLayout[@index='0']
+    Tap    name=Open Report
+    Tap    tvTitle
+    Tap    xpath=//android.widget.ImageButton
+    Sleep    1
+    Scroll    name=First Section    name=Main Menu
+    Sleep    1
+    Tap    ${screen_name}
+    Tap    tvTitle
+
+take picture
+    Sleep    1
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+
+dismiss overlay
+    Tap    tvTitle
+
+dismiss 2nd overlay
+    Tap    layoutArrow
+
+dismiss product picture overlay
+    Tap    tvItemModel
+
+begin and go to part 2
+    [Arguments]    ${screen_name}
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=5.0.2    deviceName=LRAA99JFSSAYEY79    appPackage=com.asiam.Inspection    appActivity=com.asiam.Inspection.activities.SplashActivity
+    ...    noReset=true
+    Skip video screen
+    Open Recent section
+    Sleep    2
+    Tap    xpath=//android.widget.ListView/android.widget.LinearLayout[@index='0']
+    Tap    name=Open Report
+    Tap    tvTitle
+    Tap    xpath=//android.widget.ImageButton
+    Sleep    1
+    Tap    name=First Section
+    Tap    name=Second Section
+    Sleep    2
+    Tap    ${screen_name}
+    Tap    tvTitle
+
+test for issue Measurement
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=5.0.2    deviceName=LRAA99JFSSAYEY79    appPackage=com.asiam.Inspection    appActivity=com.asiam.Inspection.activities.SplashActivity
+    ...    noReset=true
+    Skip video screen
+    Tap    relAssignment
+    Sleep    2
+    Tap    xpath=//android.widget.TextView[contains(@resource-id, 'tvName') and @text='quick full run_1312.zip']/following-sibling::android.widget.RelativeLayout/android.widget.Button
+    Sleep    1
+    Log    Downloading...
+    Wait Until Page Contains Element    button2    2 min    Can not download file CSV
+    Tap    button2
+    Tap    xpath=//android.widget.ListView/android.widget.LinearLayout[@index='0']
+    Tap    name=Open Report
+    Tap    tvTitle
+    Tap    xpath=//android.widget.ImageButton
+    Sleep    1
+    Tap    name=Sample Selection
+    Tap    tvTitle
+
+go through GeneralInformation
+    Comment    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=4.4.2    deviceName=0fc991fe    appPackage=com.asiam.Inspection
+    ...    appActivity=com.asiam.Inspection.activities.SplashActivity    noReset=true
+    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=5.0.2    deviceName=LRAA99JFSSAYEY79    appPackage=com.asiam.Inspection    appActivity=com.asiam.Inspection.activities.SplashActivity
+    ...    noReset=true
+    Skip video screen
+    Open Recent section
+    Sleep    2
+    Tap    xpath=//android.widget.ListView/android.widget.LinearLayout[@index='0']
+    Tap    name=Open Report
+    Tap    tvTitle
+    Tap    name=Factory Info
+    Log    Set an expression
+    ${status}    Element Exist    xpath=//android.widget.Button[contains(@resource-id, 'btnGetData')]
+    Run Keyword If    ${status} == True    Tap    btnGetData
+    ...    ELSE    input factory info
+    Tap    name=Reference Photos
+    Scroll    name=Factory Info    name=General Information
+    Sleep    1
+    Tap    xpath=//android.widget.GridView[contains(@resource-id,'gvImageRandom')]/android.widget.FrameLayout[@index='0']
+    Sleep    1
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    xpath=//android.widget.GridView[contains(@resource-id,'gvImageRandom')]/android.widget.FrameLayout[@index='1']
+    Sleep    1
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    xpath=//android.widget.GridView[contains(@resource-id,'gvImageRandom')]/android.widget.FrameLayout[@index='2']
+    Sleep    1
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    xpath=//android.widget.GridView[contains(@resource-id,'gvImageRandom')]/android.widget.FrameLayout[@index='3']
+    Sleep    1
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    name=Go to Sample Selection
+
+go through Workmanshipp
+    Sleep    1
+    Tap    tvTitle
+    Tap    textViewNo
+    Tap    name=Inspection
+    Tap    btnStartInspection
+    Tap    tvTitle
+    Tap    xpath=//android.widget.LinearLayout[@index='1']
+    take picture
+    dismiss overlay
+    dismiss 2nd overlay
+    take picture
+    dismiss overlay
+    dismiss 2nd overlay
+    take picture
+    dismiss product picture overlay
+    dismiss overlay
+    dismiss 2nd overlay
+    take picture
+    dismiss overlay
+    dismiss 2nd overlay
+    take picture
+    dismiss overlay
+    dismiss 2nd overlay
+    take picture
+
+go through SampleSelection
+    Sleep    1
+    Tap    tvTitle
+    Tap    textViewNo
+    Tap    name=Carton Stack
+    Tap    name=Carton Stack Picture 1
+    Tap    preview_surface
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    txtOk
+    Tap    name=Carton Stack Picture 2
+    Tap    preview_surface
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    txtOk
+    Tap    name=Front View\nShipping Mark
+    Tap    preview_surface
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    name=Side View\nShipping Mark
+    Tap    preview_surface
+    Tap    linTakePicture
+    Sleep    1
+    Tap    name=OK
+    Tap    name=CARTON SELECTION
+    Scroll    name=Sample    name=Carton Stack
+    Tap    btnGetMadatoryCarton
+    Input Text    editNumberCarton    1
+    Tap    txtOk
+    Tap    button2
+    Tap    name=Go to Workmanship
+
+input factory info
+    Tap    txtCompanyName
+    Tap    xpath=//android.support.v7.widget.RecyclerView/android.widget.LinearLayout[@index='0']
+    Tap    rlButtonNext
+    Input Text    txtDateFoundation    2017
+    Hide Keyboard
+    Tap    rlButtonNext
+    Input Text    txtLocation    Viet Nam
+    Hide Keyboard
+    Tap    rlButtonNext
+    Input Text    txtTotalNumWorker    10000
+    Hide Keyboard
+    Tap    rlButtonNext
+    Input Text    txtMainProduct    Jeans
+    Hide Keyboard
+
+verify starting inspection
+    ${status1}    Element Exist    xpath=//android.widget.TextView[@text='Confirm: Starting Inspection']
+    Run Keyword If    ${status1}    Tap    name=Yes
+
+set_new_value
+    [Arguments]    ${newValue}
+    ${num}    Set Variable    ${newValue}
